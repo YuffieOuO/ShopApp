@@ -61,10 +61,10 @@ struct ContentView: View {
                     ScrollView {
                         LazyVGrid(columns: layout, spacing: 10){
                             ForEach(animal) { animal in
-//                                NavigationLink
-                                Grids(animal: animal)
-                                    .border(Color.blue)
-                                
+                                NavigationLink(destination: ProductInformation(animal: animal)) {
+                                    Grids(animal: animal)
+                                        .border(Color.blue)
+                                }
                             }
                         }
                     }.border(Color.black)

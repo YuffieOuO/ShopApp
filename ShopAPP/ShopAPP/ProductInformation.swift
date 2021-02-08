@@ -8,29 +8,57 @@
 import SwiftUI
 
 struct ProductInformation: View {
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     let animal: Animal
-    let i = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", ]
+    
+    let i = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19" ]
+    let j = ["商品", "數量", "地區", "重量", "大小", "介紹","文字", "文字", "文字", "文字", "文字", "文字", "文字", "文字", "文字", "文字", "文字", "文字", "文字", ]
     var body: some View {
         VStack{
-            Text(animal.species)
-                .font(.largeTitle)
-                .frame(height: 15)
-                .padding()
+            HStack{
+                Text(animal.species)
+                    .font(.largeTitle)
+                    .frame(maxWidth: .infinity, maxHeight: 50)
+                    .overlay(
+                        NavigationLink(destination: ShoppingCart()){
+                            Image("basket").resizable().frame(width: 50, height: 50)
+                        },alignment: .trailing)
+                    .overlay(
+                        Button(action : {
+                            mode.wrappedValue.dismiss()
+                        }){
+                            Image("arrow-direction-left-way-backword-previous-51-28597").resizable().frame(width: 50, height: 50)
+                        },alignment: .leading)
+                
+            }.frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: 50)
+            .padding(5)
+            
             ScrollView {
                 Image(animal.imageName)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 300, height: 300)
                     .clipped()
-                    .border(Color.black)
                 
-                List {
-                    ForEach(i, id: \.self) {
-                        Text("\($0)")
-                            .font(.title3)
+                HStack(alignment:.top){
+                    VStack{
+                        ForEach(j, id: \.self) {
+                            Text("\($0)")
+                                .font(.title3)
+                                .frame(width: 100, height:40)
+                        }
+                    }
+                    Spacer()
+                    VStack{
+                        ForEach(i, id: \.self) {
+                            Text("\($0)")
+                                .font(.title3)
+                                .frame(width: 100, height:40)
+                        }
                     }
                 }
-            }.border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
+            }.padding(.horizontal, 10.0)
+            
             HStack{
                 Spacer()
                 Button(action: {
@@ -42,7 +70,7 @@ struct ProductInformation: View {
                 }
             }
             Spacer()
-        }.border(Color.red)
+        }.navigationBarHidden(true)
     }
 }
 
