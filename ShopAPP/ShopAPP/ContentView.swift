@@ -24,10 +24,18 @@ struct ContentView: View {
                         Text("Animal")
                             .frame(width: 60, height: 40)
                             .padding(.leading, 5)
-                            .border(Color.blue)
+                            .onTapGesture {
+                                animal = [
+                                    Animal(imageName: "giftbox", species: "Box", price: "500"),
+                                    Animal(imageName: "giftbox", species: "Box", price: "1000"),
+                                    Animal(imageName: "giftbox", species: "Box", price: "800"),
+                                    Animal(imageName: "giftbox", species: "Box", price: "1200"),
+                                    Animal(imageName: "giftbox", species: "Box", price: "700"),
+                                    Animal(imageName: "giftbox", species: "Box", price: "1500")]
+                            }
                         //---------- Button ---------
                         Button(action: {
-                            animal.removeAll()
+//                            animal.removeAll()
                             animal = [
                                 Animal(imageName: "dog1", species: "Dog", price: "500"),
                                 Animal(imageName: "dog2", species: "Dog", price: "1000"),
@@ -38,10 +46,9 @@ struct ContentView: View {
                                 .font(.footnote)
                                 .frame(width: 60, height: 40, alignment: .leading)
                         }
-                        .border(Color.blue)
                         //---------- Button ---------
                         Button(action: {
-                            animal.removeAll()
+//                            animal.removeAll()
                             animal = [
                                 Animal(imageName: "cat1", species: "Cat", price: "500"),
                                 Animal(imageName: "cat2", species: "Cat", price: "1000"),
@@ -54,24 +61,20 @@ struct ContentView: View {
                                 .font(.footnote)
                                 .frame(width: 60, height: 40, alignment: .leading)
                         }
-                        .border(Color.blue)
                         //---------- Button ---------
                         Spacer()
-                    }.border(Color.black)
+                    }
                     ScrollView {
                         LazyVGrid(columns: layout, spacing: 10){
                             ForEach(animal) { animal in
                                 NavigationLink(destination: ProductInformation(animal: animal)) {
                                     Grids(animal: animal)
-                                        .border(Color.blue)
                                 }
                             }
                         }
-                    }.border(Color.black)
-                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 50)
+                    }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 50)
                 }
             }.navigationBarHidden(true)
-            .border(Color.yellow)
         }
     }
 }
