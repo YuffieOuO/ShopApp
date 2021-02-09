@@ -10,9 +10,10 @@ import SwiftUI
 struct ProductInformation: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     let animal: Animal
+    let i = ["商品", "數量", "地區", "重量", "大小", "介紹","文字", "文字", "文字", "文字", "文字"]
     
-    let i = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19" ]
-    let j = ["商品", "數量", "地區", "重量", "大小", "介紹","文字", "文字", "文字", "文字", "文字", "文字", "文字", "文字", "文字", "文字", "文字", "文字", "文字", ]
+    
+    
     var body: some View {
         VStack{
             HStack{
@@ -42,7 +43,7 @@ struct ProductInformation: View {
                 
                 HStack(alignment:.top){
                     VStack{
-                        ForEach(j, id: \.self) {
+                        ForEach(i, id: \.self) {
                             Text("\($0)")
                                 .font(.title3)
                                 .frame(width: 100, height:40)
