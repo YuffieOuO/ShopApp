@@ -10,10 +10,8 @@ import SwiftUI
 struct ProductInformation: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     let animal: Animal
-    let i = ["商品", "數量", "地區", "重量", "大小", "介紹","文字", "文字", "文字", "文字", "文字"]
-    
-    
-    
+    let i = ["商品", "數量", "價格", "地區", "重量", "介紹","文字", "文字", "文字", "文字", "文字"]
+    let j = ["貓", "1", "1000","台灣", "4KG", "...", "...", "...", "...", "...", "...", ]
     var body: some View {
         VStack{
             HStack{
@@ -40,30 +38,23 @@ struct ProductInformation: View {
                     .scaledToFit()
                     .frame(width: 300, height: 300)
                     .clipped()
-                
-                HStack(alignment:.top){
-                    VStack{
-                        ForEach(i, id: \.self) {
-                            Text("\($0)")
-                                .font(.title3)
-                                .frame(width: 100, height:40)
-                        }
-                    }
-                    Spacer()
-                    VStack{
-                        ForEach(i, id: \.self) {
-                            Text("\($0)")
-                                .font(.title3)
-                                .frame(width: 100, height:40)
-                        }
-                    }
-                }
+                VStack{
+                    HStack{
+                        Text("商品")
+                            .frame(width: 100, height: 40)
+                        Text(animal.species)
+                            .font(.title3)
+                            .frame(width: 100, height:40)
+                        
+                    }.border(Color.black)
+                }.border(Color.blue)
             }.padding(.horizontal, 10.0)
+            .border(Color.black)
             
             HStack{
                 Spacer()
                 Button(action: {
-                    //                    Alert
+                    
                 }) {
                     Text("加入購物車")
                         .font(.title2)
@@ -75,8 +66,27 @@ struct ProductInformation: View {
     }
 }
 
+/*
+ struct WidgetView: View {
+ var body: some View {
+ ZStack {
+ Color.blue
+ .frame(height: 300)
+ 
+ VStack(alignment:.trailing) {
+ Text("Hello, World!")
+ .font(.headline)
+ 
+ }.border(Color.black)
+ 
+ }
+ }
+ }
+ */
+
 struct ProductInformation_Previews: PreviewProvider {
     static var previews: some View {
         ProductInformation(animal: Animal(imageName: "cat5", species: "Cat", price: "1000"))
+        //        WidgetView()
     }
 }

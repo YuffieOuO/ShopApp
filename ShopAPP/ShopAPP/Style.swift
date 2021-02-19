@@ -2,26 +2,29 @@ import SwiftUI
 
 struct BuyButton: View {
     var body: some View {
-        
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-        Button(action: {
-            
-        }) {
-            Text("Button")
+        VStack{
+            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            Button(action: {
+                
+            }) {
+                Text("Button")
+            }
         }
-        
     }
 }
 
 struct AddButton: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-        Button(action: {
-            
-        }) {
-            Text("Button")
-        }
         
+        VStack {
+            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            
+            Button(action: {
+                
+            }) {
+                Text("Button")
+            }
+        }
     }
 }
 

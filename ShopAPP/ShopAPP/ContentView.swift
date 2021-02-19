@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+//    var request = URLRequest(url: url)
     private let layout = [
         GridItem(.adaptive(minimum: 80)),
         GridItem(.adaptive(minimum: 80)),
