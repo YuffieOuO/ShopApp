@@ -46,10 +46,12 @@ struct ProductInformation: View {
                             .font(.title3)
                             .frame(width: 100, height:40)
                         
-                    }.border(Color.black)
-                }.border(Color.blue)
+                    }
+//                    .border(Color.black)
+                }
+//                .border(Color.blue)
             }.padding(.horizontal, 10.0)
-            .border(Color.black)
+//            .border(Color.black)
             
             HStack{
                 Spacer()

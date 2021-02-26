@@ -1,5 +1,7 @@
+// 參考網址：https://www.youtube.com/watch?v=eu-YaVvsbjQ
 import Combine
 import SwiftUI
+import Kingfisher
 
 struct Animal: Identifiable {
     let id = UUID()
@@ -9,28 +11,30 @@ struct Animal: Identifiable {
 
 // MARK: Product
 struct Product: Decodable {
-    var records: Records
+    var records: [Records]
 }
 
-struct Records: Decodable {
-    var fields: [Fields]
+struct Records: Decodable, Hashable {
+    var fields: Fields
 }
-
-struct Fields: Decodable,Hashable {
-    var type: String
-    var images: [Images]
-    var description: String
-    var color: [String]
-    var size: String
+// Hashable 比較
+struct Fields: Decodable, Hashable {
+    var `Type`: String
+    var Images: [Images]
+    var Description: String
+    var Color: [String]
+    var Name: String
+//    var size: String
 }
-
-struct Images: Decodable ,Hashable{
+// images的型別 [Image]，struct不可以被比較所以必須加Hashable
+struct Images: Decodable, Hashable {
     var url: String
 }
 
 class ProductViewModel: ObservableObject {
-    @Published var fields = [Fields]()
     
+    @Published var records = [Records]()
+
     init() {
         
         guard let url = URL(string: "https://api.airtable.com/v0/app9OGK8p0uZtAeKp/Furniture?api_key=keyp6AFzaTKrHngbv") else { return }
@@ -40,7 +44,7 @@ class ProductViewModel: ObservableObject {
             do {
                 let product = try JSONDecoder().decode(Product.self, from: data)
                 print("商品",product)
-                self.fields = product.records.fields
+                self.records = product.records
             } catch {
                 print("Failed to decode: \(error)")
             }
@@ -49,41 +53,55 @@ class ProductViewModel: ObservableObject {
 }
 
 
-
-
 struct ProductView: View {
-    @ObservedObject var vm = ProductViewModel()
+    @ObservedObject var productModel = ProductViewModel()
+
     var body: some View {
         NavigationView {
             ScrollView {
                 LazyVGrid(columns: [
-                    GridItem(.flexible(minimum: 100, maximum: 200), spacing: 12),
-                    GridItem(.flexible(minimum: 100, maximum: 200), spacing: 12),
-                    GridItem(.flexible(minimum: 100, maximum: 200))
-                ], spacing: 12, content: {
-                    ForEach(vm.fields, id: \.self) { num in
-                        VStack(alignment: .leading) {
-                            Spacer()
-                                .frame(width: 100, height: 100)
-                                .background(Color.blue)
-                            
-                            Text("App Title")
-                                .font(.system(size: 10, weight: .semibold))
-                            Text("Release Date")
-                                .font(.system(size: 9, weight: .regular))
-                            Text("Copyright")
-                                .font(.system(size: 9, weight: .regular))
-                                .foregroundColor(.gray)
-                        }
-                        .padding()
-                        .background(Color.red)
+                    GridItem(.flexible(minimum: 50, maximum: 200), spacing: 16, alignment: .top),
+                    GridItem(.flexible(minimum: 50, maximum: 200), spacing: 16, alignment: .top),
+                    GridItem(.flexible(minimum: 50, maximum: 200), spacing: 16)
+                ], alignment: .leading, spacing: 16, content: {
+                    ForEach(productModel.records, id: \.self) { app in
+                        Product_info(app: app)
                     }
                 }).padding(.horizontal, 12)
             }.navigationTitle("Grid Search")
         }
     }
-    
 }
+
+
+struct Product_info: View {
+    let app: Records
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            
+            KFImage(URL(string: app.fields.Images[0].url))
+                .resizable()
+                .scaledToFill()
+                .frame(width: 100, height: 100)
+                .clipped()
+                .cornerRadius(22)
+
+            Text(app.fields.Name)
+                .font(.system(size: 10, weight: .semibold))
+                .padding(.top, 4)
+            
+            Text(app.fields.Type)
+                .font(.system(size: 9, weight: .regular))
+            
+            Text(app.fields.Color[0])
+                .font(.system(size: 9, weight: .regular))
+                .foregroundColor(.gray)
+            Spacer()
+        }
+    }
+}
+
 
 struct ProductView_Previews: PreviewProvider {
     static var previews: some View {

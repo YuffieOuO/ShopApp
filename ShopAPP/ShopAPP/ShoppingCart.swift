@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ShoppingCart: View {
+    
     var body: some View {
         Text("Shopping Cart")
 //        ForEach(<#Range<Int>#>){
