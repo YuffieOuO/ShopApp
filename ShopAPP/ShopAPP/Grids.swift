@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct Grids: View {
+struct GridsModel: View {
     
     let animal: Animal
     var body: some View {
@@ -22,6 +22,6 @@ struct Grids: View {
 
 struct Grids_Previews: PreviewProvider {
     static var previews: some View {
-        Grids(animal: Animal(imageName: "dog1", species: "Dog", price: "1000"))
+        GridsModel(animal: Animal(imageName: "dog1", species: "Dog", price: "1000"))
     }
 }

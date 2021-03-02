@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ProductInformation: View {
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    
     let animal: Animal
     let i = ["商品", "數量", "價格", "地區", "重量", "介紹","文字", "文字", "文字", "文字", "文字"]
     let j = ["貓", "1", "1000","台灣", "4KG", "...", "...", "...", "...", "...", "...", ]
@@ -68,23 +69,6 @@ struct ProductInformation: View {
     }
 }
 
-/*
- struct WidgetView: View {
- var body: some View {
- ZStack {
- Color.blue
- .frame(height: 300)
- 
- VStack(alignment:.trailing) {
- Text("Hello, World!")
- .font(.headline)
- 
- }.border(Color.black)
- 
- }
- }
- }
- */
 
 struct ProductInformation_Previews: PreviewProvider {
     static var previews: some View {

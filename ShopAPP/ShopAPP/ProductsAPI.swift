@@ -34,17 +34,21 @@ struct Images: Decodable, Hashable {
 class ProductViewModel: ObservableObject {
     
     @Published var records = [Records]()
-
+    let urlString = "https://api.airtable.com/v0/app9OGK8p0uZtAeKp/Furniture?api_key=keyp6AFzaTKrHngbv"
+   
     init() {
         
-        guard let url = URL(string: "https://api.airtable.com/v0/app9OGK8p0uZtAeKp/Furniture?api_key=keyp6AFzaTKrHngbv") else { return }
+        guard let url = URL(string:urlString) else { return }
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             // check response status and error
             guard let data = data else { return }
             do {
                 let product = try JSONDecoder().decode(Product.self, from: data)
                 print("商品",product)
-                self.records = product.records
+                // DispatchQueue.main.async : background
+                DispatchQueue.main.async {
+                    self.records = product.records
+                }
             } catch {
                 print("Failed to decode: \(error)")
             }
@@ -68,7 +72,7 @@ struct ProductView: View {
                         Product_info(app: app)
                     }
                 }).padding(.horizontal, 12)
-            }.navigationTitle("Grid Search")
+            }.navigationTitle("Product")
         }
     }
 }

@@ -1,21 +1,27 @@
+//
+//  Shop_HomePage.swift
+//  ShopAPP
+//
+//  Created by mac on 2021/2/26.
+//
+
 import SwiftUI
 
-struct ContentView: View {
-    
-//    var request = URLRequest(url: url)
-    private let layout = [
-        GridItem(.adaptive(minimum: 80)),
-        GridItem(.adaptive(minimum: 80)),
-        GridItem(.adaptive(minimum: 80))
-    ]
-    //    let animal: Animal
+struct Shop_HomePage: View {
+    @ObservedObject var productModel = ProductViewModel()
     @State var animal = [
         Animal(imageName: "giftbox", species: "Box", price: "500"),
         Animal(imageName: "giftbox", species: "Box", price: "1000"),
         Animal(imageName: "giftbox", species: "Box", price: "800"),
         Animal(imageName: "giftbox", species: "Box", price: "1200"),
         Animal(imageName: "giftbox", species: "Box", price: "700"),
-        Animal(imageName: "giftbox", species: "Box", price: "1500")]
+        Animal(imageName: "giftbox", species: "Box", price: "1500")
+    ]
+    private let layout = [
+        GridItem(.adaptive(minimum: 80)),
+        GridItem(.adaptive(minimum: 80)),
+        GridItem(.adaptive(minimum: 80))
+    ]
     
     var body: some View {
         NavigationView{
@@ -23,21 +29,17 @@ struct ContentView: View {
                 ShopIcon()
                 HStack{
                     VStack(alignment: .leading) {
-                        Text("Animal")
+                        Text("Product")
                             .frame(width: 60, height: 40)
                             .padding(.leading, 5)
+                            .font(.footnote)
                             .onTapGesture {
-                                animal = [
-                                    Animal(imageName: "giftbox", species: "Box", price: "500"),
-                                    Animal(imageName: "giftbox", species: "Box", price: "1000"),
-                                    Animal(imageName: "giftbox", species: "Box", price: "800"),
-                                    Animal(imageName: "giftbox", species: "Box", price: "1200"),
-                                    Animal(imageName: "giftbox", species: "Box", price: "700"),
-                                    Animal(imageName: "giftbox", species: "Box", price: "1500")]
+                                
                             }
+                        
                         //---------- Button ---------
                         Button(action: {
-//                            animal.removeAll()
+                            //                            animal.removeAll()
                             animal = [
                                 Animal(imageName: "dog1", species: "Dog", price: "500"),
                                 Animal(imageName: "dog2", species: "Dog", price: "1000"),
@@ -50,7 +52,7 @@ struct ContentView: View {
                         }
                         //---------- Button ---------
                         Button(action: {
-//                            animal.removeAll()
+                            //                            animal.removeAll()
                             animal = [
                                 Animal(imageName: "cat1", species: "Cat", price: "500"),
                                 Animal(imageName: "cat2", species: "Cat", price: "1000"),
@@ -80,12 +82,9 @@ struct ContentView: View {
         }
     }
 }
-struct ContentView_Previews: PreviewProvider {
+
+struct Shop_HomePage_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        Shop_HomePage()
     }
 }
-
-
-
-

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0417EC9825D226D800EE5016 /* ShopIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0417EC9725D226D800EE5016 /* ShopIcon.swift */; };
 		0417EC9C25DCB3E500EE5016 /* Pay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0417EC9B25DCB3E500EE5016 /* Pay.swift */; };
+		0436931325E8F9A600109306 /* Shop_HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0436931225E8F9A600109306 /* Shop_HomePage.swift */; };
 		0441678425CCF58800E59C4D /* ProductInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0441678325CCF58800E59C4D /* ProductInformation.swift */; };
 		0441678825CCFA9300E59C4D /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0441678725CCFA9300E59C4D /* Style.swift */; };
 		04B7661225C94BA000E1471A /* ShopAPPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B7661125C94BA000E1471A /* ShopAPPApp.swift */; };
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		0417EC9725D226D800EE5016 /* ShopIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopIcon.swift; sourceTree = "<group>"; };
 		0417EC9B25DCB3E500EE5016 /* Pay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pay.swift; sourceTree = "<group>"; };
+		0436931225E8F9A600109306 /* Shop_HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shop_HomePage.swift; sourceTree = "<group>"; };
 		0441678325CCF58800E59C4D /* ProductInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInformation.swift; sourceTree = "<group>"; };
 		0441678725CCFA9300E59C4D /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		04B7660E25C94BA000E1471A /* ShopAPP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShopAPP.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,6 +73,8 @@
 			isa = PBXGroup;
 			children = (
 				04B7661125C94BA000E1471A /* ShopAPPApp.swift */,
+				04DB8C0A25CBDEF5009E2103 /* ProductsAPI.swift */,
+				0436931225E8F9A600109306 /* Shop_HomePage.swift */,
 				04B7661325C94BA000E1471A /* ContentView.swift */,
 				04B7662A25CA524D00E1471A /* Grids.swift */,
 				0441678325CCF58800E59C4D /* ProductInformation.swift */,
@@ -78,7 +82,6 @@
 				0417EC9725D226D800EE5016 /* ShopIcon.swift */,
 				04B7662125C94BD200E1471A /* ShoppingCart.swift */,
 				04B7661525C94BA500E1471A /* Assets.xcassets */,
-				04DB8C0A25CBDEF5009E2103 /* ProductsAPI.swift */,
 				04B7662425C94C0000E1471A /* CommodityInterface.swift */,
 				0417EC9B25DCB3E500EE5016 /* Pay.swift */,
 				04B7661A25C94BA500E1471A /* Info.plist */,
@@ -179,6 +182,7 @@
 				04B7662225C94BD200E1471A /* ShoppingCart.swift in Sources */,
 				0441678825CCFA9300E59C4D /* Style.swift in Sources */,
 				0417EC9825D226D800EE5016 /* ShopIcon.swift in Sources */,
+				0436931325E8F9A600109306 /* Shop_HomePage.swift in Sources */,
 				04B7661225C94BA000E1471A /* ShopAPPApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
