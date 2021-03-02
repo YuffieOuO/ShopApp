@@ -20,17 +20,11 @@ struct ProductInformation: View {
                     .font(.largeTitle)
                     .frame(maxWidth: .infinity, maxHeight: 50)
                     .overlay(
-                        NavigationLink(destination: ShoppingCart()){
-                            Image("basket").resizable().frame(width: 50, height: 50)
-                        },alignment: .trailing)
+                        ShoppingCartButton(),alignment: .trailing)
                     .overlay(
-                        Button(action : {
-                            mode.wrappedValue.dismiss()
-                        }){
-                            Image("arrow-direction-left-way-backword-previous-51-28597").resizable().frame(width: 50, height: 50)
-                        },alignment: .leading)
+                        ReturnButton(),alignment: .leading)
                 
-            }.frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: 50)
+            }.frame(maxWidth: .infinity, maxHeight: 50)
             .padding(5)
             
             ScrollView {

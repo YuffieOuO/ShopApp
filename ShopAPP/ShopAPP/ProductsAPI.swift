@@ -8,7 +8,6 @@ struct Animal: Identifiable {
     var imageName, species, price: String
 }
 
-
 // MARK: Product
 struct Product: Decodable {
     var records: [Records]
@@ -34,8 +33,9 @@ struct Images: Decodable, Hashable {
 class ProductViewModel: ObservableObject {
     
     @Published var records = [Records]()
+    
     let urlString = "https://api.airtable.com/v0/app9OGK8p0uZtAeKp/Furniture?api_key=keyp6AFzaTKrHngbv"
-   
+    
     init() {
         
         guard let url = URL(string:urlString) else { return }
@@ -45,7 +45,7 @@ class ProductViewModel: ObservableObject {
             do {
                 let product = try JSONDecoder().decode(Product.self, from: data)
                 print("商品",product)
-                // DispatchQueue.main.async : background
+                // DispatchQueue.main.async
                 DispatchQueue.main.async {
                     self.records = product.records
                 }
@@ -59,15 +59,16 @@ class ProductViewModel: ObservableObject {
 
 struct ProductView: View {
     @ObservedObject var productModel = ProductViewModel()
+    
+    private let layout = [
+        GridItem(.flexible(minimum: 50, maximum: 200), spacing: 16, alignment: .top),
+        GridItem(.flexible(minimum: 50, maximum: 200), spacing: 16, alignment: .top),
+        GridItem(.flexible(minimum: 50, maximum: 200), spacing: 16)]
 
     var body: some View {
         NavigationView {
             ScrollView {
-                LazyVGrid(columns: [
-                    GridItem(.flexible(minimum: 50, maximum: 200), spacing: 16, alignment: .top),
-                    GridItem(.flexible(minimum: 50, maximum: 200), spacing: 16, alignment: .top),
-                    GridItem(.flexible(minimum: 50, maximum: 200), spacing: 16)
-                ], alignment: .leading, spacing: 16, content: {
+                LazyVGrid(columns: layout, alignment: .leading, spacing: 16, content: {
                     ForEach(productModel.records, id: \.self) { app in
                         Product_info(app: app)
                     }

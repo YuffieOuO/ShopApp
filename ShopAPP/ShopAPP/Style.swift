@@ -1,29 +1,20 @@
 import SwiftUI
 
-struct BuyButton: View {
+struct ReturnButton: View {
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     var body: some View {
-        VStack{
-            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-            Button(action: {
-                
-            }) {
-                Text("Button")
-            }
+        Button(action : {
+            mode.wrappedValue.dismiss()
+        }){
+            Image("arrow-direction-left-way-backword-previous-51-28597").resizable().frame(width: 50, height: 50)
         }
     }
 }
 
-struct AddButton: View {
+struct ShoppingCartButton: View {
     var body: some View {
-        
-        VStack {
-            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-            
-            Button(action: {
-                
-            }) {
-                Text("Button")
-            }
+        NavigationLink(destination: ShoppingCart()){
+            Image("basket").resizable().frame(width: 50, height: 50)
         }
     }
 }
@@ -32,6 +23,6 @@ struct AddButton: View {
 
 struct Button_Previews: PreviewProvider {
     static var previews: some View {
-        BuyButton()
+        ReturnButton()
     }
 }
