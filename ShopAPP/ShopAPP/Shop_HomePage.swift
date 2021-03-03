@@ -30,11 +30,10 @@ struct Shop_HomePage: View {
                 HStack{
                     VStack(alignment: .leading) {
                         Text("Product")
-                            .frame(width: 60, height: 40)
+                            .frame(width: 50, height: 40)
                             .padding(.leading, 5)
                             .font(.footnote)
                             .onTapGesture {
-                                
                             }
                         
                         //---------- Button ---------
@@ -48,7 +47,7 @@ struct Shop_HomePage: View {
                             Text("Dog")
                                 .padding(.leading, 10)
                                 .font(.footnote)
-                                .frame(width: 60, height: 40, alignment: .leading)
+                                .frame(width: 50, height: 40, alignment: .leading)
                         }
                         //---------- Button ---------
                         Button(action: {
@@ -63,20 +62,33 @@ struct Shop_HomePage: View {
                             Text("Cat")
                                 .padding(.leading, 10)
                                 .font(.footnote)
-                                .frame(width: 60, height: 40, alignment: .leading)
+                                .frame(width: 50, height: 40, alignment: .leading)
                         }
                         //---------- Button ---------
                         Spacer()
                     }
+                    
+//                    ScrollView {
+//                        LazyVGrid(columns: layout, alignment: .leading, spacing: 10, content: {
+//                            ForEach(productModel.records, id: \.self) { app in
+//                                Product_info(app: app)
+//                            }
+//                        }).padding(.horizontal, 12)
+//                    }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 50)
+                    
+                    
                     ScrollView {
                         LazyVGrid(columns: layout, spacing: 10){
-                            ForEach(animal) { animal in
-                                NavigationLink(destination: ProductInformation(animal: animal)) {
-                                    GridsModel(animal: animal)
+                            ForEach(productModel.records, id: \.self) { app in
+                                NavigationLink(destination:  ProductInformation(app: app)) {
+                                    ProductGrids(app: app)
                                 }
                             }
                         }
                     }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 50)
+                    
+                    
+                    
                 }
             }.navigationBarHidden(true)
         }

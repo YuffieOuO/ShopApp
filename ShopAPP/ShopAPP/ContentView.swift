@@ -69,8 +69,8 @@ struct ContentView: View {
                     ScrollView {
                         LazyVGrid(columns: layout, spacing: 10){
                             ForEach(animal) { animal in
-                                NavigationLink(destination: ProductInformation(animal: animal)) {
-                                    GridsModel(animal: animal)
+                                NavigationLink(destination: AnimalInfo(animal: animal)) {
+                                    GridsModel(name: animal.species, image: animal.imageName, price: animal.price)
                                 }
                             }
                         }

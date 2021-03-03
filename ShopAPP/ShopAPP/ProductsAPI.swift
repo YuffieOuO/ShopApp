@@ -23,6 +23,7 @@ struct Fields: Decodable, Hashable {
     var Description: String
     var Color: [String]
     var Name: String
+//    var Unitcost: Int
 //    var size: String
 }
 // images的型別 [Image]，struct不可以被比較所以必須加Hashable
@@ -61,16 +62,17 @@ struct ProductView: View {
     @ObservedObject var productModel = ProductViewModel()
     
     private let layout = [
-        GridItem(.flexible(minimum: 50, maximum: 200), spacing: 16, alignment: .top),
-        GridItem(.flexible(minimum: 50, maximum: 200), spacing: 16, alignment: .top),
-        GridItem(.flexible(minimum: 50, maximum: 200), spacing: 16)]
+        GridItem(.flexible(minimum: 30, maximum: 150), spacing: 16, alignment: .top),
+        GridItem(.flexible(minimum: 30, maximum: 150), spacing: 16, alignment: .top),
+        GridItem(.flexible(minimum: 30, maximum: 150), spacing: 16)]
+    
 
     var body: some View {
         NavigationView {
             ScrollView {
                 LazyVGrid(columns: layout, alignment: .leading, spacing: 16, content: {
                     ForEach(productModel.records, id: \.self) { app in
-                        Product_info(app: app)
+                        ProductGrids(app: app)
                     }
                 }).padding(.horizontal, 12)
             }.navigationTitle("Product")
@@ -79,7 +81,7 @@ struct ProductView: View {
 }
 
 
-struct Product_info: View {
+struct ProductGrids: View {
     let app: Records
     
     var body: some View {
@@ -88,7 +90,7 @@ struct Product_info: View {
             KFImage(URL(string: app.fields.Images[0].url))
                 .resizable()
                 .scaledToFill()
-                .frame(width: 100, height: 100)
+                .frame(width: 80, height: 80)
                 .clipped()
                 .cornerRadius(22)
 
