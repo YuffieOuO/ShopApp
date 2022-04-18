@@ -11,8 +11,8 @@ import SwiftUI
 struct ShopAPPApp: App {
     var body: some Scene {
         WindowGroup {
-//            Shop_HomePage()
-            ProductView()
+            Shop_HomePage()
+//            ProductView()
         }
     }
 }
