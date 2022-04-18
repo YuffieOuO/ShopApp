@@ -104,8 +104,7 @@ struct ProductGrids: View {
             Text(app.fields.Color[0])
                 .font(.system(size: 9, weight: .regular))
                 .foregroundColor(.gray)
-            Spacer()
-        }
+        }.frame(width: 80, height: 125)
     }
 }
 
