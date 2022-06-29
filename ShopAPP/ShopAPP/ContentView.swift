@@ -35,9 +35,8 @@ struct ContentView: View {
                                     Animal(imageName: "giftbox", species: "Box", price: "700"),
                                     Animal(imageName: "giftbox", species: "Box", price: "1500")]
                             }
-                        //---------- Button ---------
                         Button(action: {
-//                            animal.removeAll()
+                            animal.removeAll()
                             animal = [
                                 Animal(imageName: "dog1", species: "Dog", price: "500"),
                                 Animal(imageName: "dog2", species: "Dog", price: "1000"),
@@ -48,9 +47,8 @@ struct ContentView: View {
                                 .font(.footnote)
                                 .frame(width: 60, height: 40, alignment: .leading)
                         }
-                        //---------- Button ---------
                         Button(action: {
-//                            animal.removeAll()
+                            animal.removeAll()
                             animal = [
                                 Animal(imageName: "cat1", species: "Cat", price: "500"),
                                 Animal(imageName: "cat2", species: "Cat", price: "1000"),
@@ -63,7 +61,6 @@ struct ContentView: View {
                                 .font(.footnote)
                                 .frame(width: 60, height: 40, alignment: .leading)
                         }
-                        //---------- Button ---------
                         Spacer()
                     }
                     ScrollView {
